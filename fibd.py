@@ -1,5 +1,3 @@
-#!/usr/env
-
 from util import *
 #fibonacci mortal rabbits, #pairs after n months, each dead after m month
 
