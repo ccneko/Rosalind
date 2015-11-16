@@ -1,4 +1,5 @@
 #!/usr/env
+
 from util import *
 #fibonacci mortal rabbits, #pairs after n months, each dead after m month
 
@@ -13,7 +14,11 @@ def fibd(n,m):
 		repro = temp
 		print p,repro,dead
 	writeResult('fibd',str(p))
-#n=int(readData('rosalind_fibd.txt')[0].rsplit()[0])
-#m=int(readData('rosalind_fibd.txt')[0].rsplit()[1])
-#fibd(n,m)
-fibd(7,3)
+
+data = open('rosalind_fibd.txt','r')
+line = data.readline()
+n = int(line.split()[0])
+m = int(line.split()[1])
+data.close()
+
+fibd(n,m)
