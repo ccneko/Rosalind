@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #superstring from FASTA
 
 def cons(seq):
@@ -38,14 +38,14 @@ def cons(seq):
 		G.append(g)
 		T.append(t)
 
-	print cons
-	writeResult('cons',cons+'\n')
+	#print cons
+	writeResult(cons+'\n')
 	aa = 'A: '+' '.join(str(x) for x in A)+'\n'
 	cc = 'C: '+' '.join(str(x) for x in C)+'\n'
 	gg = 'G: '+' '.join(str(x) for x in G)+'\n'
 	tt = 'T: '+' '.join(str(x) for x in T)+'\n'
-	print aa,cc,gg,tt
-	writeResult('cons',aa+cc+gg+tt)
+	#print aa,cc,gg,tt
+	writeResult(aa+cc+gg+tt)
 
-f = readFASTA('rosalind_cons.txt')
+f = readFASTA('data/rosalind_cons.txt')
 cons(f[1])

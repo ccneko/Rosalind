@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #binary search
 
 def bins():
@@ -34,4 +34,5 @@ def notfound():
 	#print '-1'
 	writeResult('bins','-1 ')
 
+flushResult()
 bins()

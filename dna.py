@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #count number of each base
 
 def  countbase(s):
@@ -19,7 +19,8 @@ def  countbase(s):
 			t += 1
 		result = '\t'.join([str(a),str(c),str(g),str(t)])
 	print result
-	writeResult('dna',result)
+	writeResult(result)
 
-s=readData('rosalind_dna.txt')[0]
+flushResult()
+s=readData('data/rosalind_dna.txt')[0]
 countbase(s)

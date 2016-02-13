@@ -1,13 +1,14 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #transcribe DNA to RNA, ie 'T' to 'U'
 
 def transcribe(s):
 	for i in s:
 		if i == 'T':
-			writeResult('rna',"U")
+			writeResult("U")
 		else:
-			writeResult('rna',i)
+			writeResult(i)
 
-s=readData('rosalind_rna.txt')[0]
+flushResult()
+s=readData('data/rosalind_rna.txt')[0]
 transcribe(s)

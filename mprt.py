@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 import re
 #find N-glycosylation N{P}[ST]{P} motif from UniProt FASTA
 

@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #fibonacci
 
 def fibo(n):

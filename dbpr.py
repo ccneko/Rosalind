@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 import urllib2
 #get GO from UniProt given UniProt ID
 

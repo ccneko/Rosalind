@@ -1,4 +1,4 @@
-from util import *
+from rosa_util import *
 #fibonacci mortal rabbits, #pairs after n months, each dead after m month
 
 def fibd(n,m):

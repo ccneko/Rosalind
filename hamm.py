@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #hamming distance
 
 def hamm(s1,s2):
@@ -8,9 +8,10 @@ def hamm(s1,s2):
 		if s1[i] != s2[i]:
 			h += 1
 	print h
-	writeResult('hamm',str(h))
+	writeResult(str(h))
 
-f = readData('rosalind_hamm.txt')
+flushResult()
+f = readData('data/rosalind_hamm.txt')
 s1 = f[0].rstrip()
 s2 = f[1].rstrip()
 hamm(s1,s2)

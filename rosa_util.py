@@ -1,6 +1,6 @@
 #!/usr/env
 #write results to file
-import sys
+import sys, os
 from time import strftime
 import urllib2
 
@@ -8,9 +8,27 @@ def readData(datafilename):
 	with open(datafilename,'r') as f:
 		return f.readlines()
 
-def writeResult(funcname,s):
-	resulttime = strftime("-%Y%m%d_%H%M")
-	resultname = funcname + resulttime + '-result.txt'
+def prepResultDir():
+	try:
+		os.makedirs('result')
+	#except OSError as exception:
+		#if exception.errno != errno.EEXIST:
+			#raise
+		#else:
+			#pass
+	except OSError:
+		pass
+
+def flushResult():
+	callername = sys._getframe(0).f_back.f_globals['__file__'].split('\\')[-1].rsplit('.',1)[0]
+	prepResultDir()
+	resultname = 'result/' + callername + '-result.txt'
+	r = open(resultname,'w')
+	r.close()
+		
+def writeResult(s):
+	callername = sys._getframe(0).f_back.f_globals['__file__'].split('\\')[-1].rsplit('.',1)[0]
+	resultname = 'result/' + callername + '-result.txt'
 	with open(resultname,'a') as r:
 		r.write(s)
 
@@ -20,21 +38,32 @@ def test():
 	print test.__name__
 	print funcname
 
-def readRNAcodon():
-	#UCAG
+def readCodon(file):
+	try:
+		f = open(file,'r')
+		f.close()
+	except OSError:
+		aa = stdCodon()
+		return aa
 	aa= []
-	with open('rna_codon.tsv','r') as f:
+	tmp = []
+	with open(file,'r') as f:
 		for line in f.readlines():
-			aa.append(line.rstrip().rsplit()[1])
+			tmp = tmp + line.strip().split('\t')
+	tmp = sorted(tmp)
+	for code in tmp:	
+		aa.append(code.split()[1])
 	return aa
 
-def readDNAcodon():
-        #TCAG
-        aa= []
-        with open('dna_codon.tsv','r') as f:
-                for line in f.readlines():
-                        aa.append(line.rstrip().rsplit()[1])
-        return aa
+def stdCodon():
+	aa = ['K', 'N', 'K', 'N', 'T', 'T', 'T', 'T', \
+		 'R', 'S', 'R', 'S', 'I', 'I', 'M', 'I', 'Q',\
+		 'H', 'Q', 'H', 'P', 'P', 'P', 'P', 'R', 'R', \
+		 'R', 'R', 'L', 'L', 'L', 'L', 'E', 'D', 'E', \
+		 'D', 'A', 'A', 'A', 'A', 'G', 'G', 'G', 'G', \
+		 'V', 'V', 'V', 'V', 'Stop', 'Y', 'Stop', 'Y', \
+		 'S', 'S', 'S', 'S', 'Stop', 'C', 'W', 'C', 'L', 'F', 'L', 'F']
+	return aa
 
 def readaamass():
 	water = 18.01056
@@ -62,16 +91,6 @@ def readFASTA(FASTAname):
 				temp = temp + line.rstrip()
 		seq.append(temp)
 	return seqname,seq
-
-def getDNAcodon():
-	with open('rna_codon.tsv','r') as old:
-		with open('dna_codon.tsv','w') as new:
-			for line in old.readlines():
-				for i,j in enumerate(line):
-					if j == 'U':
-						new.write('T')
-					else:
-						new.write(j)
 
 def revc(s):
 	s1 = ''

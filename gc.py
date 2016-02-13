@@ -1,5 +1,5 @@
 #!/usr/env
-from util import *
+from rosa_util import *
 #find motif from
 
 def gc(s):
@@ -11,7 +11,7 @@ def gc(s):
 	return gc
 
 def findhighgc():
-	with open('rosalind_gc.txt','r') as f:
+	with open('data/rosalind_gc.txt','r') as f:
 		seqname = []
 		gcvalue = []
 		newseq = ''
@@ -34,9 +34,10 @@ def findhighgc():
 			highgc = newgc
 
 	gcname = seqname[gcvalue.index(highgc)]
-	writeResult('gc',gcname+'\n')
-	writeResult('gc','%.6f' % highgc)
+	writeResult(gcname+'\n')
+	writeResult('%.6f' % highgc)
 	print gcname
 	print '%.6f' % highgc
 
+flushResult()
 findhighgc()
