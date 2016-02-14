@@ -3,30 +3,32 @@ from rosa_util import *
 import re
 #find N-glycosylation N{P}[ST]{P} motif from UniProt FASTA
 
-def nglyc():
+def findpatternpos(pattern):
 	db = 'http://www.uniprot.org/uniprot/'
-	pattern = re.compile('N[^P][ST][^P]')
-	f = open('rosalind_mprt.txt','r')
+	f = open('data/rosalind_mprt.txt','r')
+	
 	for line in f.readlines():
+		# get FASTA
 		pos = []
-		entry = readFASTAfromDB(db,line.rstrip()+'.fasta')
-		seqname = entry[0]
-		seq = entry[1]
+		url = db+line.strip()+'.fasta'
+		fasta = readFASTA(url)
+		seqname = fasta[0][0]
+		seq = fasta[1][0]
 		
 		for i in range(len(seq)):
+			# find position of pattern
 			if seq[i] == 'N':
 				if pattern.match(seq[i:i+4]):
 					pos.append(i+1)
-					#print seq[i:i+4]
 		
 		if len(pos) > 0:
-			print line.rstrip()
-			writeResult('mprt',line)
+			# write result
+			writeResult(line)
 			motifpos = ' '.join(str(x) for x in pos)
-			print motifpos
-			writeResult('mprt',motifpos+'\n')
-			
+			writeResult(motifpos+'\n')
 					
 	f.close()
-	
-nglyc()
+
+flushResult()
+pattern = re.compile('N[^P][ST][^P]')
+findpatternpos(pattern)

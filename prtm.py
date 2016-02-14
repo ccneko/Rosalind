@@ -12,7 +12,8 @@ def protmass(s):
 	for i in s:
 		mass = mass + aamass[aa.index(i)]
 	print '%.3f' % mass
-	writeResult('prtm',str('%.3f' % mass))
+	writeResult(str('%.3f' % mass))
 
-s=readData('rosalind_prtm.txt')[0].rstrip()
+flushResult()
+s=readData('data/rosalind_prtm.txt')[0].rstrip()
 protmass(s)

@@ -1,47 +1,32 @@
 #!/usr/env
 from rosa_util import *
-#get O3 from FASTA
+#get O3 from FASTA, note that a "directed graph" is required
 
-def getFASTAnode(FASTAname,n):
-	seqname = []
-	seqpre = []
-	seqsuf = []
-
-	with open(FASTAname,'r') as f:
-		while True:
-			line = f.readline()
-			if len(line) == 0:
-				break
-			elif line[0] == '>':
-				seqname.append(line.rstrip()[1:])
-				seqline = f.readline().rstrip()
-				seqpre.append(seqline[:n])
-				seqsuf.append(seqline.rstrip()[-n:])
-			else:
-				seqsuf[-1] = line.rstrip()[-n:]
-	return seqname,seqpre,seqsuf
-
-def edge1(seqname,seqpre,seqsuf):
-	for i,j in enumerate(seqsuf):
-		for p,q in enumerate(seqpre):
-			if j == q and i != p:
-				print seqname[i]+'\t'+seqname[p]
-				writeResult(seqname[i]+'\t'+seqname[p]+'\n')
-
-def edge(seqname,seq,n):
-	for i in range(len(seqname)):
-		for j in range(len(seqname)):
-			if seq[i][-n:] == seq[j][:n]:
-				if len(seq[i]) != len(seq[j]):
-					print seqname[i]+' '+seqname[j]
-					writeResult(seqname[i]+' '+seqname[j]+'\n')
+def edge(seqnamelist,seqlist,k):
+	edges = []
+	tmppair = []
+	for i in range(len(seqnamelist)):
+		for j in range(len(seqnamelist)):
+			# check if the suffix k-mer of the i-th sequence = the prefix of the j-th
+			if seqlist[i][-k:] == seqlist[j][:k]:
+				# ensure the two sequences are not the same
+				tmppair = [seqnamelist[i],seqnamelist[j]]
+				if len(seqlist[i]) != len(seqlist[j]):
+					# check not duplicated
+					if tmppair not in edges:
+						#print seqnamelist[i]+' '+seqnamelist[j]
+						writeResult(' '.join(tmppair)+'\n')
+						edges.append(tmppair)
 				else:
-					for p in range(len(seq[i])):
-						if seq[i][p] != seq[j][p]:
-							print seqname[i]+' '+seqname[j]
-		                                        writeResult(seqname[i]+' '+seqname[j]+'\n')
+					for p in range(len(seqlist[i])):
+						if seqlist[i][p] != seqlist[j][p]:
+							if tmppair not in edges:
+								#print seqnamelist[i]+' '+seqnamelist[j]
+								writeResult(' '.join(tmppair)+'\n')
+								edges.append(tmppair)
 							break
+	return edges
 
-
+flushResult()
 f = readFASTA('data/rosalind_grph.txt')
 edge(f[0],f[1],3)
