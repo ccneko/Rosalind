@@ -10,5 +10,5 @@ def transcribe(s):
 			writeResult(i)
 
 flushResult()
-s=readData('data/rosalind_rna.txt')[0]
+s=readData()[0]
 transcribe(s)

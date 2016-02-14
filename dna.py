@@ -22,5 +22,5 @@ def  countbase(s):
 	writeResult(result)
 
 flushResult()
-s=readData('data/rosalind_dna.txt')[0]
+s=readData()[0]
 countbase(s)

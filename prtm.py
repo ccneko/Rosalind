@@ -1,4 +1,4 @@
-#!/usr/env
+#!/bin/env
 from rosa_util import *
 #calculate protein mass
 
@@ -15,5 +15,5 @@ def protmass(s):
 	writeResult(str('%.3f' % mass))
 
 flushResult()
-s=readData('data/rosalind_prtm.txt')[0].rstrip()
+s=readData()[0].strip()
 protmass(s)

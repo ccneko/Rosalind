@@ -11,10 +11,10 @@ def Pdom(k,m,n):
 	#prob = 1 - n1*(n1+m1/2) - m1*m1/4
 	#prob = 1 - 2 * n/total * (n-1)/(total-1) - 2* n/total * (m/2)/total - 2* (m/2)/total * ((m-1)/2)/(total - 1)
 	print '%.5f' % prob
-	writeResult('iprb', '%.5f' % prob)
+	writeResult('%.5f' % prob)
 	return prob
 
-f = readData('rosalind_iprb.txt')[0].rsplit()
+f = readData()[0].rsplit()
 k = float(f[0])
 m = float(f[1])
 n = float(f[2])

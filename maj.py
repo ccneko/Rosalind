@@ -24,11 +24,11 @@ def maj():
 					maj = D[num]
 			if D[num] > half:
 				#print num
-				writeResult('maj',str(num)+' ')
+				writeResult(str(num)+' ')
 				break	
 		if maj <= half:
 				#print '-1'
-				writeResult('maj','-1 ')
+				writeResult('-1 ')
 	f.close
 
 

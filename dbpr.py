@@ -23,7 +23,7 @@ def protGO():
 			if GO[0] == ' P':
 				arrive = 1
 				print GO[1]
-				writeResult('dbpr',GO[1]+'\n')
+				writeResult(GO[1]+'\n')
 			
 					
 	f.close()

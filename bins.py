@@ -17,14 +17,14 @@ def bins():
 			if n in l[:len(l)/2]:
 				ans = str(l.index(n)+1)
 				#print ans
-				writeResult('bins',ans+' ')
+				writeResult(ans+' ')
 			else:
 				notfound()
 		elif n >= m:
 			if n in l[len(l)/2:]:	
 				ans = str(l.index(n)+1)
 				#print ans
-				writeResult('bins',ans+' ')
+				writeResult(ans+' ')
                                         
 			else:
 				notfound()

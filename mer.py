@@ -18,13 +18,13 @@ def mer():
 
 	for i in range(n+m):
 		if len(l1) == 0:
-			writeResult('mer',' '.join(str(x) for x in l2))
+			writeResult(' '.join(str(x) for x in l2))
 			return
 			#for x in l2:
 			#	l.append(x)
 			#	return l
 		elif len(l2) == 0:
-			writeResult('mer',' '.join(str(x) for x in l1))
+			writeResult(' '.join(str(x) for x in l1))
 			return
 			#for x in l1:
 			#	l.append(x)

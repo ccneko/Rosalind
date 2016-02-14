@@ -11,7 +11,7 @@ def fibd(n,m):
 		p = p + repro - dead.pop()
 		repro = temp
 		print p,repro,dead
-	writeResult('fibd',str(p))
+	writeResult(str(p))
 
 data = open('rosalind_fibd.txt','r')
 line = data.readline()

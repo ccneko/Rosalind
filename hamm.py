@@ -11,7 +11,7 @@ def hamm(s1,s2):
 	writeResult(str(h))
 
 flushResult()
-f = readData('data/rosalind_hamm.txt')
+f = readData()
 s1 = f[0].rstrip()
 s2 = f[1].rstrip()
 hamm(s1,s2)

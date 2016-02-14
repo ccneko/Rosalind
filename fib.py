@@ -14,7 +14,7 @@ def fib(n,k):
 	writeResult(str(p))
 
 flushResult()
-data = readData('data/rosalind_fib.txt')[0]
+data = readData()[0]
 n=int(data.rsplit()[0])
 k=int(data.rsplit()[1])
 fib(n,k)

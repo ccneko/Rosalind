@@ -7,10 +7,15 @@ import urllib2
 callername = sys._getframe(0).f_back.f_globals['__file__'].split('\\')[-1].rsplit('.',1)[0]
 resultname = 'result/' + callername + '-result.txt'
 
-def readData(datafilename):
-	with open(datafilename,'r') as f:
-		return f.readlines()
+def readData():
+	dir = 'data/'
+	filename = dir + 'rosalind_' + callername + '.txt'
+	return readFile(filename)
 
+def readFile(filename):
+	with open(filename,'r') as f:
+		return f.readlines()
+		
 def prepResultDir():
 	try:
 		os.makedirs('result')

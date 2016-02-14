@@ -1,4 +1,4 @@
-#!/usr/env
+#!/bin/env
 from rosa_util import *
 from Bio.Emboss.Applications import NeedleCommandline
 import re
@@ -6,7 +6,7 @@ import re
 fetch
 
 def needle():
-	needle_cline = NeedleCommandline(asequence = 
+	needle_cline = NeedleCommandline(asequence = )
 
 def nglyc():
 	db = 'http://www.uniprot.org/uniprot/'
