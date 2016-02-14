@@ -21,6 +21,7 @@ def  countbase(s):
 	print result
 	writeResult(result)
 
-flushResult()
-s=readData()[0]
-countbase(s)
+if __name__ == '__main__':
+	flushResult()
+	s=readData()[0]
+	countbase(s)

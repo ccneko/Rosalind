@@ -47,5 +47,6 @@ def cons(seq):
 	#print aa,cc,gg,tt
 	writeResult(aa+cc+gg+tt)
 
-f = readFASTA('data/rosalind_cons.txt')
-cons(f[1])
+if __name__ == '__main__':
+	f = readFASTA('data/rosalind_cons.txt')
+	cons(f[1])

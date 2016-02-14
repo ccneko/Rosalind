@@ -34,5 +34,6 @@ def notfound():
 	#print '-1'
 	writeResult('bins','-1 ')
 
-flushResult()
-bins()
+if __name__ == '__main__':
+	flushResult()
+	bins()

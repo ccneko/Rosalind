@@ -114,4 +114,7 @@ def translate(s,codonfile):
 			break
 		prot += aa[a]
 	return prot
-	
+
+if __name__ == '__main__':
+	# for testing etc
+	pass

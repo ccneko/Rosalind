@@ -13,8 +13,9 @@ def fib(n,k):
 	print p
 	writeResult(str(p))
 
-flushResult()
-data = readData()[0]
-n=int(data.rsplit()[0])
-k=int(data.rsplit()[1])
-fib(n,k)
+if __name__ == '__main__':
+	flushResult()
+	data = readData()[0]
+	n=int(data.rsplit()[0])
+	k=int(data.rsplit()[1])
+	fib(n,k)

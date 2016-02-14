@@ -28,5 +28,5 @@ def protGO():
 					
 	f.close()
 	
-
-protGO()
+if __name__ == '__main__':
+	protGO()
